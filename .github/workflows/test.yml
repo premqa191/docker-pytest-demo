@@ -1,0 +1,17 @@
+name: Docker PyTest CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code from Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Automation Image
+        run: docker build -t my-pytest-image .
+
+      - name: Run PyTest inside Docker Container
+        run: docker run --rm my-pytest-image
