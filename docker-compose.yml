@@ -1,0 +1,9 @@
+services:
+  test-runner:
+    build: .
+    image: my-pytest-image
+    environment:
+      - TEST_ENV=staging
+    volumes:
+      - ./reports:/app/reports
+    command: pytest -v -s --html=reports/report.html --self-contained-html
