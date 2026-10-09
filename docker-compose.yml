@@ -1,9 +1,7 @@
 services:
-  test-runner:
+  playwright-runner:
     build: .
-    image: my-pytest-image
-    environment:
-      - TEST_ENV=staging
+    image: my-playwright-automation
     volumes:
       - ./reports:/app/reports
-    command: pytest -v -s --html=reports/report.html --self-contained-html
+    command: pytest test_web.py -v --html=reports/web_report.html --self-contained-html
